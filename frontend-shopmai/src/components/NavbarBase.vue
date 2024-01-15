@@ -8,34 +8,39 @@
             <div id="brand-name">ShopMaiUp</div>
         </div>
         <div id="menu">
-            <a href="">
+            <a href="" @click="ifclickInthisPage">
                 <div id="menu01">รายการสินค้า</div>
             </a>
-            <a href="">
+            <a href="" @click="ifclickInthisPage">
                 <div id="menu02">ข้อเสนอแนะ</div>
-            </a>
-            <a href="">
-                <div id="menu03">จัดการโพส</div>
             </a>
         </div>
         <div id="crepost">
-            <button id="btn">
+            <button class="btn btn-accent px-12" @click="ifclickInthisPage">
                 <img id="img-btn" src="../assets/plus0.png" alt="">
                 <div id="text-btn">ฝากขาย</div>
             </button>
         </div>
         <div id="profile">
-            <a href="">
-                <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            </a>
+            <button class="btn btn-accent text-base-100">เข้าสู่ระบบ</button>
         </div>
     </div>
 </template>
 
 <script>
+    import Swal from "sweetalert2";
     export default {
         data () {
             return {
+            }
+        },
+        methods: {
+            ifclickInthisPage() {
+                Swal.fire({
+                    icon: "error",
+                    title: "เกิดข้อผิดพลาด!",
+                    text: "กรุณาเข้าสู่ระบบก่อน!",
+                });                
             }
         }
     }
@@ -119,21 +124,6 @@
         width: 10%;
     }
 
-    #btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 40px;
-        width: 100%;
-        border-radius: 5px;
-        background-color: #1D1F2B;;
-        cursor: pointer;
-    }
-
-    #btn:hover {
-        background-color: #222431;
-    }
-
     #img-btn {
         height: 20px;
         width: 20px;
@@ -153,11 +143,17 @@
         height: 80px;
         width: 10%;
     }
-
-    #pro-pic {
-        height: 48px;
-        width: 48px;
-        border-radius: 50%;
+    
+    #btn-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 50%;
+        border-radius: 5px;
+        background-color: #1D1F2B;;
+        color: #fff;
+        cursor: pointer;
     }
 
 </style>
