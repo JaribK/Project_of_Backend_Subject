@@ -9,7 +9,7 @@
                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/890d1d59-2f1f-458f-850d-bbfe4c88fb26/dfh1cg7-3d4f59ab-9873-4555-b040-820256b5dfd8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg5MGQxZDU5LTJmMWYtNDU4Zi04NTBkLWJiZmU0Yzg4ZmIyNlwvZGZoMWNnNy0zZDRmNTlhYi05ODczLTQ1NTUtYjA0MC04MjAyNTZiNWRmZDgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WfEM8JHNPcTsyBaxmr3kCRCtCwObFiXuXrcsTckwfRY" alt="" class="h-full object-cover">
             </div>
             <div id="right" class="grid place-items-center w-[35%]">
-                <form class="grid grid-cols-1 w-[80%] space-y-2">
+                <form class="grid grid-cols-1 w-[80%] space-y-2" @submit.prevent="login">
                     <h2 id="title-login" class="text-center text-[32px] font-bold pb-2">เข้าสู่ระบบ</h2>
                     <input type="text" v-model="username" id="username" placeholder="ชื่อผู้ใช้" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     <input type="password" v-model="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
     export default {
         name: 'LoginPage',
         data () {
@@ -44,7 +45,11 @@
                     localStorage.setItem('username', this.username)
                     this.$router.push('/')
                 } else {
-                    alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
+                    Swal.fire({
+                        icon: "error",
+                        title: "เกิดข้อผิดพลาด!",
+                        text: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!",
+                    });
                 }
             }
         }

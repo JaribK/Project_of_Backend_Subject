@@ -27,7 +27,7 @@
                             </label>
                         </form>
                         <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1" >
-                            <div class="h-[258px] w-[520px] bg-white rounded-[28px] flex overflow-hidden" :v-for="d in filteredList" :key="d.postid">
+                            <div class="h-[258px] w-[520px] bg-white rounded-[28px] flex overflow-hidden" v-for="d in filteredList" :key="d.postid">
                                 <div class="w-[240px] bg-[#252837] h-full rounded-l-[28px]">
                                     <img :src="d.image" class="h-full object-cover">
                                 </div>
@@ -41,7 +41,7 @@
                                         <div class="h-full w-full flex items-center">
                                             <p>มีสินค้าทั้งหมด {{ d.amount }} ชิ้น</p>
                                         </div>
-                                        <router-link :v-for="d in filteredList" :key="d.postid" :to="`/product/` + d.postid">
+                                        <router-link :to="`/product/` + d.postid">
                                             <button class="btn btn-secondary h-fit ">เพิ่มเติม</button>
                                         </router-link>
                                     </div>
@@ -77,8 +77,6 @@
                     checkedLogin() {
                         if (localStorage.getItem('username') != null) {
                             this.username = localStorage.getItem('username')
-                        } else {
-                            this.$router.push('/login')
                         }
                     }
                 },
@@ -87,6 +85,11 @@
                         return this.data.filter(post => {
                             return post.title.toLowerCase().includes(this.search.toLowerCase())
                         })
+
+                    },
+                    logout() {
+                        localStorage.removeItem('username', this.username)
+                        this.$router.push('/login')
                     }
                 }
             }
