@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="bg-[#222431] h-screen grid place-items-center">
+    <div class="bg-[#1D1F2B] min-h-screen grid place-items-center">
         <div id="box" class="w-[900px] h-[600px] flex bg-[#fff] rounded-[28px] overflow-hidden">
             <div id="left" class="h-full w-[65%]">
                 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/890d1d59-2f1f-458f-850d-bbfe4c88fb26/dfh1cg7-3d4f59ab-9873-4555-b040-820256b5dfd8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzg5MGQxZDU5LTJmMWYtNDU4Zi04NTBkLWJiZmU0Yzg4ZmIyNlwvZGZoMWNnNy0zZDRmNTlhYi05ODczLTQ1NTUtYjA0MC04MjAyNTZiNWRmZDgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WfEM8JHNPcTsyBaxmr3kCRCtCwObFiXuXrcsTckwfRY" alt="" class="h-full object-cover">

@@ -43,7 +43,6 @@
 
 <style scoped>
     #Navbar {
-        position: fixed;
         display: flex;
         align-items: center;
         height: 80px;
