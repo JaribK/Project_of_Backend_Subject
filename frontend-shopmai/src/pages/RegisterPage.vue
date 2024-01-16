@@ -11,14 +11,14 @@
             <div id="right" class="grid place-items-center w-[35%]">
                 <form class="grid grid-cols-1 w-[80%] space-y-3">
                     <h2 id="title-login" class="text-center text-[32px] font-bold pb-2">สมัครสมาชิก</h2>
-                    <input type="firstname" id="password" placeholder="ชื่อจริง" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <input type="lastname" id="password" placeholder="นามสกุล" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <input type="text" id="username" placeholder="ชื่อผู้ใช้" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <input type="email" id="password" placeholder="อีเมล" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <input type="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <input type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="firstname" type="firstname" id="firstname" placeholder="ชื่อจริง" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="lastname" type="lastname" id="lastname" placeholder="นามสกุล" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="username" type="text" id="username" placeholder="ชื่อผู้ใช้" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="email" type="email" id="email" placeholder="อีเมล" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="password" type="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
+                    <input v-model="confirmPassword" type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     
-                    <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white pt-2">สมัครสมาชิก</button>
+                    <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white pt-2" @click="register">สมัครสมาชิก</button>
                     <router-link to="/login" class="text-center pt-8 underline">มีบัญชีอยู่แล้ว ?</router-link>
                 </form>
             </div>
@@ -26,7 +26,43 @@
     </div>
 </template>
 
-<script></script>
+<script>
+    import axios from 'axios'
+    import Swal from "sweetalert2";
+    export default {
+        name: 'RegisterPage',
+        data() {
+            return {
+                firstname: '',
+                lastname: '',
+                email: '',
+                username: '',
+                password: '',
+                confirmPassword: '',
+                error: ''
+            }
+        },
+        methods : {
+            async register() {
+                try {
+                        const res = await axios.post('http://127.0.0.1:8000/api/users/', {
+                            firstname: this.firstname,
+                            lastname: this.lastname,
+                            email: this.email,
+                            username: this.username,
+                            password: this.password,
+                        });
+                        console.log(res.data);
+                        this.$router.push('/login');
+                    }
+                 catch (err) {
+                    console.log(err.response.data.message);
+                    this.error = err.response.data.message;
+                }
+            },
+        }
+    }
+</script>
 
 <style scoped>
 </style>

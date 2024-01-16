@@ -37,12 +37,10 @@
                     checkedLogin() {
                         if (localStorage.getItem('username') != null) {
                             this.username = localStorage.getItem('username')
-                        } else {
-                            this.$router.push('/login')
                         }
                     },
                     logout() {
-                        localStorage.removeItem('username')
+                        localStorage.removeItem('username', this.username)
                         this.$router.push('/login')
                     }
                 }

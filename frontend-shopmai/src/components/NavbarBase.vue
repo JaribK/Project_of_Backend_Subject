@@ -8,10 +8,10 @@
             <div id="brand-name">ShopMaiUp</div>
         </div>
         <div id="menu">
-            <a href="" @click="ifclickInthisPage">
+            <a @click="ifclickInthisPage">
                 <div id="menu01">รายการสินค้า</div>
             </a>
-            <a href="" @click="ifclickInthisPage">
+            <a @click="ifclickInthisPage">
                 <div id="menu02">ข้อเสนอแนะ</div>
             </a>
         </div>
@@ -82,6 +82,10 @@
         height: 80px;
         width: 100%;
         padding: 0 20px;
+    }
+
+    #menu01:hover {
+        background-color: #222431;
     }
 
     #menu02 {
