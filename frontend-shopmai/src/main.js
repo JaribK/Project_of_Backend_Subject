@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage.vue'
 import App from './App.vue'
 import router from '../router/index.js'
 
-// // Vuetify
+// Vuetify
 // import 'vuetify/styles'
 // import { createVuetify } from 'vuetify'
 // import * as components from 'vuetify/components'
