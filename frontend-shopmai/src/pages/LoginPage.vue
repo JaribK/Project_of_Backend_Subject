@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import Swal from "sweetalert2";
     export default {
         name: 'LoginPage',
         data () {
@@ -45,7 +45,11 @@ import { mapState } from 'vuex';
                     localStorage.setItem('username', this.username)
                     this.$router.push('/')
                 } else {
-                    alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง')
+                    Swal.fire({
+                        icon: "error",
+                        title: "เกิดข้อผิดพลาด!",
+                        text: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!",
+                    });
                 }
             }
         }
