@@ -18,10 +18,12 @@
             </a>
         </div>
         <div id="crepost">
-            <button class="btn btn-accent px-12" @click="ifclickInthisPage">
-                <img id="img-btn" src="../assets/plus0.png" alt="">
-                <div id="text-btn">ฝากขาย</div>
-            </button>
+            <router-link to="/create-post">
+                <button class="btn btn-accent w-full" @click="ifclickInthisPage" >
+                    <img id="img-btn" src="../assets/plus0.png" alt="">
+                    <div id="text-btn">ฝากขาย</div>
+                </button>
+            </router-link> 
         </div>
         <div id="profile">
             <router-link to="/login">

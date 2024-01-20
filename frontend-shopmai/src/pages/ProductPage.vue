@@ -33,6 +33,7 @@ document.title = 'Product | ShopMaiUP'
                         <div class="w-full p-8">
                             <div class="w-full border-b-2 border-[#252837] grid grid-cols-[90%_10%]">
                                 <h2 class="text-[45px] font-bold">{{ product.title }}</h2>
+                                
                                 <IconThreeDotsVue class="justify-self-end self-center translate-y-[-8px]"/>
                             </div>
                             <div class="h-full grid grid-rows-[45%_55%]">
