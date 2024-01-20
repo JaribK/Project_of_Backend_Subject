@@ -27,7 +27,7 @@
                             </label>
                         </form>
                         <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1" >
-                            <div class="h-[258px] w-[520px] bg-white rounded-[28px] flex overflow-hidden" v-for="d in filteredList" :key="d.postid">
+                            <div class="h-[258px] w-[520px] rounded-[28px] flex overflow-hidden shadow-lg shadow-black" v-for="d in filteredList" :key="d.postid">
                                 <div class="w-[240px] bg-[#252837] h-full rounded-l-[28px]">
                                     <img :src="d.image" class="h-full object-cover">
                                 </div>

@@ -14,7 +14,7 @@
                 </p>
                 <button class="btn w-[212px] h-[48px] btn-error" @click="logout">Logout</button>
             </div>
-            <div id="information" class=" w-[1024px] my-16 rounded-[28px] overflow-hidden justify-self-center rounded-[28px]">
+            <div id="information" class=" w-[1024px] my-16 rounded-[28px] overflow-hidden justify-self-center">
                 <div class="bg-[#3C3C3C] drop-shadow-lg z-50 p-4">
                     <h2 class="text-white ml-8">ข้อมูลผู้ใช้</h2>
                 </div>
@@ -52,8 +52,8 @@
             <div id="favourite" class="grid place-items-center">
                 <div>
                     <h2 class="text-[24px] text-white justify-self-start flex items-center">สิ่งที่ชอบ<img src="../assets/star.png" class="w-[24px] h-[24px] ml-2" alt=""></h2>
-                    <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1" >
-                        <div class="h-[258px] w-[520px] bg-white rounded-[28px] flex overflow-hidden" v-for="d in posts" :key="d.postid">
+                    <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1">
+                        <div class="h-[258px] w-[520px] rounded-[28px] flex overflow-hidden shadow-lg shadow-black" v-for="d in posts" :key="d.postid">
                             <div class="w-[240px] bg-[#252837] h-full rounded-l-[28px]">
                                 <img :src="d.image" class="h-full object-cover">
                             </div>
