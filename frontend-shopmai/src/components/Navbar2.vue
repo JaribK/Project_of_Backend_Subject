@@ -76,7 +76,6 @@
         height: 80px;
         width: 100%;
         padding: 0 20px;
-        background-color: #222431;
     }
 
     #menu02 {
