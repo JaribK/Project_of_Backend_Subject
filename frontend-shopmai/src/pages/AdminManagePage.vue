@@ -25,15 +25,22 @@
                 </div>
                 <div id="datalist" class="divide-y-2 divide-accent z-30">
                     <div class="bg-[#303346] grid grid-cols-[10%_30%_30%_30%] text-white p-6 drop-shadow-lg w-full h-full" v-for="d in filteredList" :key="d.postid">
-                        <h2 class="flex ml-4 items-center">{{ d.postid }}</h2>
-                        <h2 class="flex items-center">{{ d.title }}</h2>
-                        <h2 class="flex items-center">{{ d.date_post }}</h2>
-                        <div class="flex gap-4 ">
-                            <router-link :to="`/product/` + d.postid">
-                                <button class="btn btn-success w-[88px] h-[48px] text-white justify-self-center">ดูโพสต์</button>
-                            </router-link>
-                            <button class="btn btn-error w-[88px] h-[48px] text-white justify-self-center">ลบ</button>
-                        </div>
+                        <template v-if="filteredList > 0">
+                            <h2 class="flex ml-4 items-center">{{ d.postid }}</h2>
+                            <h2 class="flex items-center">{{ d.title }}</h2>
+                            <h2 class="flex items-center">{{ d.date_post }}</h2>
+                            <div class="flex gap-4 ">
+                                <router-link :to="`/product/` + d.postid">
+                                    <button class="btn btn-success w-[88px] h-[48px] text-white justify-self-center">ดูโพสต์</button>
+                                </router-link>
+                                <button class="btn btn-error w-[88px] h-[48px] text-white justify-self-center">ลบ</button>
+                            </div>
+                        </template>
+                        <template>
+                            <div>
+                                
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>
