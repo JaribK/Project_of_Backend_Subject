@@ -22,7 +22,9 @@
             </button>
         </div>
         <div id="profile">
-            <button class="btn btn-accent text-base-100">เข้าสู่ระบบ</button>
+            <router-link to="/login">
+                <button class="btn btn-accent text-base-100">เข้าสู่ระบบ</button>
+            </router-link>
         </div>
     </div>
 </template>
