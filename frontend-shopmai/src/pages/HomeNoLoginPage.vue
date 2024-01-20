@@ -4,7 +4,7 @@
 
 <template>
     <div class="bg-accent min-h-screen">
-        <Navbar />
+        <Navbar/>
         
     </div>
 </template>

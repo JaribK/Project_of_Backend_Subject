@@ -11,7 +11,7 @@
             <div class="grid place-items-center">
                 <form class="w-1/2 flex">
                     <label class="w-full h-full bg-white grid grid-cols-[95%_5%] rounded-full overflow-hidden py-3">
-                        <input v-model="search" type="text" class="ml-8 focus:outline-none">
+                        <input v-model="search" placeholder="ค้นหาไอดีหรือชื่อโพสต์" type="text" class="ml-8 focus:outline-none">
                         <button class="text-black translate-y-px"><IconSearchBar/></button>
                     </label>
                 </form>
@@ -24,8 +24,8 @@
                     <h2>Manage</h2>
                 </div>
                 <div id="datalist" class="divide-y-2 divide-accent z-30">
-                    <div class="bg-[#303346] grid grid-cols-[10%_30%_30%_30%] text-white p-6 drop-shadow-lg w-full h-full" v-for="d in filteredList" :key="d.postid">
-                        <template v-if="filteredList > 0">
+                    <template v-if="filteredList.length > 0">
+                        <div class="bg-[#303346] grid grid-cols-[10%_30%_30%_30%] text-white p-6 drop-shadow-lg w-full h-full" v-for="d in filteredList" :key="d.postid">
                             <h2 class="flex ml-4 items-center">{{ d.postid }}</h2>
                             <h2 class="flex items-center">{{ d.title }}</h2>
                             <h2 class="flex items-center">{{ d.date_post }}</h2>
@@ -35,13 +35,13 @@
                                 </router-link>
                                 <button class="btn btn-error w-[88px] h-[48px] text-white justify-self-center">ลบ</button>
                             </div>
-                        </template>
-                        <template>
-                            <div>
-                                
-                            </div>
-                        </template>
-                    </div>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="bg-[#303346] grid grid-cols-1 text-white p-6 drop-shadow-lg w-full h-full">
+                            <p>Not found data.</p>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ import posts from './posts.json'
         computed: {
             filteredList() {
                 return this.data.filter(post => {
-                    return post.title.toLowerCase().includes(this.search.toLowerCase())
+                    return post.title.toLowerCase().includes(this.search.toLowerCase()) || post.postid.toString().includes(this.search)
                 })
             }
         }    
