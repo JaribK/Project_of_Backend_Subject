@@ -1,5 +1,6 @@
 #0
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 class Users(models.Model):
@@ -17,8 +18,9 @@ class Users(models.Model):
 
 class Posts(models.Model):
     post_title = models.CharField(max_length=50,null=False)
-    post_thumbnail = models.ImageField(max_length=200,null=True)
+    post_thumbnail = models.ImageField(null=True, blank=True, upload_to = 'images/')
     post_sfdc = models.CharField(max_length=200,null=True)
+    post_date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(Users,on_delete=models.CASCADE,null=False,related_name='posts')
     ulike_post = models.ManyToManyField(Users,related_name='liked_posts',null=True)
 
@@ -26,9 +28,10 @@ class Products(models.Model):
     description = models.CharField(max_length=256,null=False)
     price = models.IntegerField(null=False)
     quantity = models.IntegerField(null=False)
-    post_date = models.DateField(auto_now_add=True)
     img_src = models.ImageField(null=True, blank=True, upload_to = 'images/')
     post = models.OneToOneField(Posts,on_delete=models.CASCADE,related_name='products',default='')
+    contact_facebook = models.CharField(max_length=255,null=False,default='')
+    contact_line = models.CharField(max_length=255,null=False ,default='')
 
 class Feedbacks(models.Model):
     title = models.CharField(max_length=50,null=False)
