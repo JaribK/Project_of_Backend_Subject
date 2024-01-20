@@ -63,7 +63,9 @@
                             </div>
                         </div>
                         <div id="next" class="justify-self-end pb-10">
-                            <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ถัดไป</button>
+                            <router-link to="/edit-product">
+                                <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ถัดไป</button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
