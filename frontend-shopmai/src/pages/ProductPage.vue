@@ -1,5 +1,5 @@
 <script setup>
-import Navbar from '../components/Navbar0.vue'
+import Navbar from '../components/NavbarNoneSelect.vue'
 import IconThreeDotsVue from '../components/icons/IconThreeDots.vue';
 
 document.title = 'Product | ShopMaiUP'

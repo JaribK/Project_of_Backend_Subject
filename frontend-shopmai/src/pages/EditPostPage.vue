@@ -1,5 +1,5 @@
 <script setup>
-    import Navbar from '../components/NavbarBase.vue'
+    import Navbar from '../components/NavbarNoneSelect.vue'
     
     document.title = 'EditPost | ShopMaiUP'
 </script>

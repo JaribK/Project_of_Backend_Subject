@@ -1,5 +1,5 @@
 <script setup>
-    import NavbarBase from '../components/NavbarBase.vue';
+    import NavbarBase from '../components/NavbarHome.vue';
     import IconSearchBar from '../components/icons/IconSearchbar.vue';
 
     document.title = 'Home | ShopMaiUP'

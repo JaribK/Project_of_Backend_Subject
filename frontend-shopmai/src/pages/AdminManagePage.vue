@@ -1,5 +1,5 @@
 <script setup>
-    import Navbar from '../components/Navbar2.vue'
+    import Navbar from '../components/NavbarAdmin.vue'
     import IconSearchBar from '../components/icons/IconSearchbar.vue';
 </script>
 

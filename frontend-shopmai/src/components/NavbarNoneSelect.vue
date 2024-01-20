@@ -4,30 +4,29 @@
 <template>
     <div id="Navbar">
         <div id="brand" >
-            <img id="brand-img" src="../assets/pepsi.png">
-            <div id="brand-name">ShopMaiUp</div>
+            <router-link to="/" class="flex justify-center items-center space-x-4">
+                <img id="brand-img" src="../assets/pepsi.png">
+                <div id="brand-name">ShopMaiUp</div>
+            </router-link>
         </div>
         <div id="menu">
-            <a href="">
+            <router-link to="/">
                 <div id="menu01">รายการสินค้า</div>
-            </a>
-            <a href="">
+            </router-link>
+            <router-link to="/feedback">
                 <div id="menu02">ข้อเสนอแนะ</div>
-            </a>
-            <a href="">
-                <div id="menu03">จัดการโพส</div>
-            </a>
-        </div>
-        <div id="crepost">
-            <button id="btn">
-                <img id="img-btn" src="../assets/plus0.png" alt="">
-                <div id="text-btn">ฝากขาย</div>
-            </button>
-        </div>
-        <div id="profile">
-            <a href="">
-                <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            </a>
+            </router-link>
+            </div>
+            <div id="crepost">
+                <button id="btn">
+                    <img id="img-btn" src="../assets/plus0.png" alt="">
+                    <div id="text-btn">ฝากขาย</div>
+                </button>
+            </div>
+            <div id="profile">
+                <router-link to="/profile">
+                    <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
+                </router-link>
         </div>
     </div>
 </template>
@@ -78,6 +77,10 @@
         padding: 0 20px;
     }
 
+    #menu01:hover {
+        background-color: #222431;
+    }
+
     #menu02 {
         display: flex;
         align-items: center;
@@ -100,7 +103,6 @@
         height: 80px;
         width: 100%;
         padding: 0 20px;
-        background-color: #222431;
     }
 
     #menu03:hover {
