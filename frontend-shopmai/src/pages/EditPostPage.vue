@@ -8,7 +8,7 @@
     <div id="editpost" class="bg-[#222431] w-full min-h-screen " >
         <Navbar></Navbar>
         <div class="">
-            <div id="post-content" class="grid place-items-center min-h-screen">
+            <div id="post-content" class="grid place-items-center min-h-screen pb-20">
                 <div id="create-box" class="w-[1106px] h-[824px] flex bg-[#303346] rounded-[28px] overflow-hidden grid place-items-center">
                     <div id="writen" class=" h-[764px] w-[957px] grid" >
                         <div id="titlebox" class="w-full h-[67] border-b-2">
