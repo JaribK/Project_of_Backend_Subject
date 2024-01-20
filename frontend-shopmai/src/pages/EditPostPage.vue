@@ -8,7 +8,7 @@
     <div id="editpost" class="bg-[#222431] w-full min-h-screen " >
         <Navbar></Navbar>
         <div class="">
-            <div id="post-content" class="grid place-items-center min-h-screen">
+            <div id="post-content" class="grid place-items-center min-h-screen pb-20">
                 <div id="create-box" class="w-[1106px] h-[824px] flex bg-[#303346] rounded-[28px] overflow-hidden grid place-items-center">
                     <div id="writen" class=" h-[764px] w-[957px] grid" >
                         <div id="titlebox" class="w-full h-[67] border-b-2">
@@ -40,7 +40,7 @@
                                 </div><br>
                                 <div id="box-post3" class=" w-full h-[247px] flex">
                                     <div id="attribute-text" class=" flex-1 w-[327px]">
-                                       <h1 class="text-[22px] text-white">:ระบุรายละเอียดโพส:</h1>
+                                       <h1 class="text-[22px] text-white">ระบุรายละเอียดโพส</h1>
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
                                         <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[229px] rounded-[8px]" placeholder=":รายละเอียดโพส:"></textarea>
