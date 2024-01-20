@@ -11,7 +11,7 @@ document.title = 'Product | ShopMaiUP'
         <div class="bg-[#1D1F2B] min-h-screen">
             <div class="grid place-items-center">
                 <div class="w-4/5 grid place-items-center">
-                    <div class="flex bg-white w-[1106px] h-[656px] mt-16 rounded-[28px] overflow-hidden">
+                    <div class="flex bg-white w-[1106px] h-[656px] mt-16 rounded-[28px] overflow-hidden shadow-lg shadow-black">
                         <div class="w-[450px] h-full flex flex-col ">
                             <div class="w-[450px] h-[450px] bg-[#252837] grid place-items-center overflow-hidden">
                                 <img :src="product.image" alt="product_image" class="h-full object-cover">
