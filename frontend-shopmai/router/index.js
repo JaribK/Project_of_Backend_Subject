@@ -3,7 +3,10 @@ import HomePage from '../src/pages/HomePage.vue'
 import LoginPage from '../src/pages/LoginPage.vue'
 import RegisterPage from '../src/pages/RegisterPage.vue'
 import CreatePostPage from '../src/pages/CreatePostPage.vue'
+import EditPostPage from '../src/pages/EditPostPage.vue'
 import ProductPage from '../src/pages/ProductPage.vue'
+import CreateProductPage from '../src/pages/CreateProductPage.vue'
+import EditProductPage from '../src/pages/EditProductPage.vue'
 
 const routes = [
     {
@@ -30,6 +33,21 @@ const routes = [
         path: '/product/:id',
         name: 'product',
         component: ProductPage,
+    },
+    {
+        path: '/edit-post',
+        name: 'edit-post',
+        component: EditPostPage,
+    },
+    {
+        path: '/create-product',
+        name: 'create-product',
+        component: CreateProductPage,
+    },
+    {
+        path: '/edit-product',
+        name: 'edit-product',
+        component: EditProductPage,
     },
 ]
 
