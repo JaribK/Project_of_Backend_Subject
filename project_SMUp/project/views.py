@@ -2,8 +2,8 @@
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Users,Posts,Products,Feedbacks
-from .serializers import UsersSerializers,PostsSerializers,ProductsSerializers,FeedbacksSerializers
+from .models import Users,Posts,Products,Feedbacks,Login,Register
+from .serializers import UsersSerializers,PostsSerializers,ProductsSerializers,FeedbacksSerializers,LoginSerializers,RegisterSerializers
 
 # Create your views here.
 
@@ -66,6 +66,36 @@ class FeedbacksList(generics.ListCreateAPIView):
 class FeedbacksDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FeedbacksSerializers
     queryset = Feedbacks.objects.all()
+
+#Login
+class LoginList(generics.ListCreateAPIView):
+    serializer_class = LoginSerializers
+
+    def get_queryset(self):
+        queryset = Login.objects.all()
+        location = self.request.query_params.get('location')
+        if location is not None:
+            queryset = queryset.filter(testLocation=location)
+        return queryset
+
+class LoginDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = LoginSerializers
+    queryset = Login.objects.all()
+
+#Register
+class RegisterList(generics.ListCreateAPIView):
+    serializer_class = RegisterSerializers
+
+    def get_queryset(self):
+        queryset = Register.objects.all()
+        location = self.request.query_params.get('location')
+        if location is not None:
+            queryset = queryset.filter(testLocation=location)
+        return queryset
+
+class RegisterDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = RegisterSerializers
+    queryset = Register.objects.all()
 
 apis_data = [
     {'name_api':'Users','src':{'list':'users','index':'users/1/'}},

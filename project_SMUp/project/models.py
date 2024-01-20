@@ -11,9 +11,9 @@ class Users(models.Model):
 
     firstname = models.CharField(max_length=50,null=False)
     lastname = models.CharField(max_length=50,null=False)
-    username = models.CharField(max_length=50,null=False)
+    username = models.CharField(max_length=50,null=False,unique=True)
     password = models.CharField(max_length=50,null=False)
-    email = models.EmailField(max_length=60,null=False)
+    email = models.EmailField(max_length=60,null=False,unique=True)
     role = models.CharField(max_length=20, choices=status, default='member')
 
 class Posts(models.Model):
@@ -22,7 +22,7 @@ class Posts(models.Model):
     post_sfdc = models.CharField(max_length=200,null=True)
     post_date = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(Users,on_delete=models.CASCADE,null=False,related_name='posts')
-    ulike_post = models.ManyToManyField(Users,related_name='liked_posts',null=True)
+    ulike_post = models.ManyToManyField(Users,related_name='liked_posts')
 
 class Products(models.Model):
     description = models.CharField(max_length=256,null=False)
@@ -36,3 +36,14 @@ class Products(models.Model):
 class Feedbacks(models.Model):
     title = models.CharField(max_length=50,null=False)
     description = models.CharField(max_length=256,null=False)
+
+class Login(models.Model):
+    username = models.CharField(max_length=50,null=False)
+    password = models.CharField(max_length=50,null=False)
+
+class Register(models.Model):
+    firstname = models.CharField(max_length=50,null=False)
+    lastname = models.CharField(max_length=50,null=False)
+    username = models.CharField(max_length=50,null=False)
+    password = models.CharField(max_length=50,null=False)
+    email = models.EmailField(max_length=60,null=False)
