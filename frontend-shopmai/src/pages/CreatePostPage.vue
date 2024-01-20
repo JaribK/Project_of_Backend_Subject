@@ -40,7 +40,7 @@
                                 </div><br>
                                 <div id="box-post3" class=" w-full h-[247px] flex">
                                     <div id="attribute-text" class=" flex-1 w-[327px]">
-                                       <h1 class="text-[22px] text-white">:ระบุรายละเอียดโพส:</h1>
+                                       <h1 class="text-[22px] text-white">ระบุรายละเอียดโพส</h1>
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
                                         <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[229px] rounded-[8px]" placeholder=":รายละเอียดโพส:"></textarea>
