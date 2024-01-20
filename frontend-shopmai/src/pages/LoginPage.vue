@@ -10,6 +10,7 @@
             </div>
             <div id="right" class="grid place-items-center w-[35%]">
                 <form class="grid grid-cols-1 w-[80%] space-y-2" @submit.prevent="login">
+
                     <h2 id="title-login" class="text-center text-[32px] font-bold pb-2">เข้าสู่ระบบ</h2>
                     <input type="text" v-model="username" id="username" placeholder="ชื่อผู้ใช้" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     <input type="password" v-model="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
@@ -35,15 +36,15 @@ import Swal from "sweetalert2";
             return {
                 username: '',
                 password: '',
-                user:"gg123",
-                pass:"09873434"
+                user:"123",
+                pass:"123"
             }
         },
         methods: {
             login(){
                 if (this.username == this.user && this.password == this.pass) {
                     localStorage.setItem('username', this.username)
-                    this.$router.push('/')
+                    this.$router.push('/home')
                 } else {
                     Swal.fire({
                         icon: "error",

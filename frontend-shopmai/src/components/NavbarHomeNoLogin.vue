@@ -18,16 +18,14 @@
             </a>
         </div>
         <div id="crepost">
-            <router-link to="/create-post">
-                <button class="btn btn-accent w-full" @click="ifclickInthisPage" >
-                    <img id="img-btn" src="../assets/plus0.png" alt="">
-                    <div id="text-btn">ฝากขาย</div>
-                </button>
-            </router-link> 
+            <button class="btn btn-accent w-full" @click="ifclickInthisPage" >
+                <img id="img-btn" src="../assets/plus0.png" alt="">
+                <div id="text-btn">ฝากขาย</div>
+            </button>
         </div>
         <div id="profile">
-            <router-link to="/login">
-                <button class="btn btn-accent text-base-100">เข้าสู่ระบบ</button>
+            <router-link to='/login'>
+                <button class="btn btn-secondary text-white">เข้าสู่ระบบ</button>
             </router-link>
         </div>
     </div>
@@ -163,6 +161,12 @@
         background-color: #1D1F2B;;
         color: #fff;
         cursor: pointer;
+    }
+
+    #pro-pic {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
     }
 
 </style>

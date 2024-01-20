@@ -65,7 +65,9 @@
                                </div>
                              </div>
                              <div class="flex justify-evenly pt-10">
-                                <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ยืนยัน</button>
+                                <router-link to="/home">
+                                    <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ยืนยัน</button>
+                                </router-link>
                                 <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ยกเลิก</button>
                              </div>
                              

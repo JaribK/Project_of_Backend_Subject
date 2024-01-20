@@ -10,11 +10,12 @@ import EditProductPage from '../src/pages/EditProductPage.vue'
 import FeedbackPage from '../src/pages/FeedbackPage.vue'
 import ProfilePage from '../src/pages/ProfilePage.vue'
 import AdminManagePage from '../src/pages/AdminManagePage.vue'
+import HomeNoLoginPage from '../src/pages/HomeNoLoginPage.vue'
 
 
 const routes = [
     {
-        path: '/',
+        path: '/home',
         name: 'home',
         component: HomePage,
     },
@@ -68,6 +69,11 @@ const routes = [
         name: 'admin-manage',
         component: AdminManagePage,
     },
+    {
+        path: '/',
+        name: 'home-no-login',
+        component: HomeNoLoginPage,
+    }
 ]
 
 const router = createRouter({

@@ -1,4 +1,5 @@
 <script setup>
+import Swal from 'sweetalert2';
 import Navbar from '../components/NavbarNoneSelect.vue'
 import IconThreeDotsVue from '../components/icons/IconThreeDots.vue';
 
@@ -11,9 +12,9 @@ document.title = 'Product | ShopMaiUP'
         <div class="bg-[#1D1F2B] min-h-screen">
             <div class="grid place-items-center">
                 <div class="w-4/5 grid place-items-center">
-                    <div class="flex bg-white w-[1106px] h-[656px] mt-16 rounded-[28px] overflow-hidden shadow-lg shadow-black">
+                    <div class="flex bg-white w-[1106px] h-[656px] mt-16 rounded-[28px] shadow-lg shadow-black">
                         <div class="w-[450px] h-full flex flex-col ">
-                            <div class="w-[450px] h-[450px] bg-[#252837] grid place-items-center overflow-hidden">
+                            <div class="w-[450px] h-[450px] bg-[#252837] overflow-hidden grid place-items-center rounded-tl-[28px]">
                                 <img :src="product.image" alt="product_image" class="h-full object-cover">
                             </div>
                             <div class="w-full h-[calc(656px-450px)] border-r-2 border-[#252837] p-4 space-y-2">
@@ -33,8 +34,19 @@ document.title = 'Product | ShopMaiUP'
                         <div class="w-full p-8">
                             <div class="w-full border-b-2 border-[#252837] grid grid-cols-[90%_10%]">
                                 <h2 class="text-[45px] font-bold">{{ product.title }}</h2>
-                                
-                                <IconThreeDotsVue class="justify-self-end self-center translate-y-[-8px]"/>
+                                <div class="dropdown dropdown-right">
+                                    <button>
+                                        <IconThreeDotsVue class="justify-self-end self-center translate-y-[-8px]"/>
+                                    </button>
+                                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow-lg bg-base-100 rounded-box w-52">
+                                        <router-link to="/edit-post">
+                                            <li class="text-blue-400 font-bold"><a>แก้ไขสินค้า</a></li>
+                                        </router-link>
+                                        <router-link to="/">
+                                            <li class="text-red-400 font-bold"><a>ลบสินค้า</a></li>
+                                        </router-link>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="h-full grid grid-rows-[45%_55%]">
                                 <div class="h-full mt-16">
@@ -77,7 +89,7 @@ document.title = 'Product | ShopMaiUP'
                         } else {
                             this.$router.push('/login')
                         }
-                    }
+                    },
                 },
             }
 </script>

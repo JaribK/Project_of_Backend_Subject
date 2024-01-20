@@ -4,13 +4,13 @@
 <template>
     <div id="Navbar">
         <div id="brand" >
-            <router-link to="/" class="flex justify-center items-center space-x-4">
+            <router-link to="/home" class="flex justify-center items-center space-x-4">
                 <img id="brand-img" src="../assets/pepsi.png">
                 <div id="brand-name">ShopMaiUp</div>
             </router-link>
         </div>
         <div id="menu">
-            <router-link to="/">
+            <router-link to="/home">
                 <div id="menu01">รายการสินค้า</div>
             </router-link>
             <router-link to="/feedback">
@@ -26,18 +26,45 @@
                 </router-link> 
             </div>
             <div id="profile">
-                <router-link to="/profile">
-                    <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-                </router-link>
-        </div>
+                <details class="dropdown dropdown-end ">
+                    <summary class="m-1 avatar cursor-pointer">
+                        <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                    </summary>
+                    <ul class="dropdown-content z-[1] menu shadow bg-accent rounded-box w-52 text-white outline outline-2 outline-slate-600 mt-2">
+                        <router-link to="/profile"> 
+                            <li class="text-blue-400 font-bold hover:bg-slate-700 rounded-lg"><a>โปรไฟล์ของคุณ</a></li>
+                        </router-link>
+                        <li class="text-red-500 font-bold hover:bg-slate-700 rounded-lg" @click="logout"><a>ออกจากระบบ</a></li>
+                    </ul>
+                </details>
+            </div>
     </div>
 </template>
 
 <script>
+    import Swal from 'sweetalert2';
+
     export default {
         data () {
             return {
+                
             }
+        },
+        methods : {
+            logout() {
+                Swal.fire({
+                    title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "ยกเลิก",
+                    confirmButtonText: 'แน่นอน'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        localStorage.removeItem('username', this.username);
+                        this.$router.push('/login');
+                    }
+                })
+            },
         }
     }
 </script>

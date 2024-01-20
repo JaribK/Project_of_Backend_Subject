@@ -12,7 +12,7 @@
                 <p class="text-white text-[24px] font-bold mb-[55px]">
                     {{ username }}
                 </p>
-                <button class="btn w-[212px] h-[48px] btn-error" @click="logout">Logout</button>
+                <button class="btn w-[212px] h-[48px] btn-error" @click="logout">ออกจากระบบ</button>
             </div>
             <div id="information" class=" w-[1024px] my-16 rounded-[28px] overflow-hidden justify-self-center">
                 <div class="bg-[#3C3C3C] drop-shadow-lg z-50 p-4">
@@ -98,9 +98,19 @@
         },
         methods : {
             logout() {
-                localStorage.removeItem('username', this.username);
-                this.$router.push('/login');
-            },
+                        Swal.fire({
+                            title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
+                            icon: "warning",
+                            showCancelButton: true,
+                            cancelButtonText: "ยกเลิก",
+                            confirmButtonText: 'แน่นอน'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.removeItem('username', this.username)
+                                this.$router.push('/login')
+                            }
+                        })
+                    },
         }
     }
 </script>

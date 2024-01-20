@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import HomePage from './pages/HomePage.vue'
 import App from './App.vue'
 import router from '../router/index.js'
-import PrimeVue from 'primevue/config'
 
 // Vuetify
 // import 'vuetify/styles'
