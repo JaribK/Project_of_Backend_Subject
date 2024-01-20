@@ -21,7 +21,7 @@
                                 </div>
                                 <div id="attribute-box" class="grid-2 w-full ">
                                    <div class="shadow-2xl">
-                                       <textarea id="message" rows="4" class="block p-2.5 w-full text-[18px] h-[41px] rounded-[8px]" placeholder=":ชื่อสินค้า:"></textarea>
+                                       <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":ชื่อสินค้า:"></textarea>
                                    </div>
                                  </div>
                                
@@ -37,7 +37,8 @@
                                     </div>
                                   </div>
                             </div>
-                            <div id="p2-2" class="flex-1">
+                            <div id="free" class="w-[20px] flex-2"></div>
+                            <div id="p2-2" class="flex-3">
                                 <div id="attribute-text" class=" grid-1 w-[327px]">
                                     <h1 class="text-[22px] text-white">ระบุจำนวนของสินค้า</h1>
                                  </div>
