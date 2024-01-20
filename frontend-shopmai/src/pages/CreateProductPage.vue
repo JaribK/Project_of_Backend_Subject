@@ -37,7 +37,7 @@
                                     </div>
                                   </div>
                             </div>
-                            <div id="free" class="w-[20px] flex-2"></div>
+                            <div id="free" class="w-[50px] flex-2"></div>
                             <div id="p2-2" class="flex-3">
                                 <div id="attribute-text" class=" grid-1 w-[327px]">
                                     <h1 class="text-[22px] text-white">ระบุจำนวนของสินค้า</h1>
