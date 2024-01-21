@@ -26,8 +26,8 @@
                 <div id="datalist" class="divide-y-2 divide-accent z-30">
                     <template v-if="filteredList.length > 0">
                         <div class="bg-[#303346] grid grid-cols-[10%_30%_30%_30%] text-white p-6 drop-shadow-lg w-full h-full" v-for="d in filteredList" :key="d.postid">
-                            <h2 class="flex ml-4 items-center">{{ d.postid }}</h2>
-                            <h2 class="flex items-center">{{ d.title }}</h2>
+                            <h2 class="flex ml-4 items-center">{{ d.id }}</h2>
+                            <h2 class="flex items-center">{{ d.post_title }}</h2>
                             <h2 class="flex items-center">{{ d.date_post }}</h2>
                             <div class="flex gap-4 ">
                                 <router-link :to="`/product/` + d.postid">
@@ -48,13 +48,16 @@
     </div>
 </template>
 <script>
-import posts from './posts.json'
+import axios from 'axios'
+
+const host = 'http://127.0.0.1:8888/';
+
     export default {
         name: 'AdminManagePage',
 
         data () {
             return {
-                data: posts,
+                data: [],
                 search: ''
             }
         
@@ -62,6 +65,12 @@ import posts from './posts.json'
 
         created(){
             this.showPosts()
+        },
+        mounted() {
+            axios.get(host + 'api/posts/')
+                .then(res => {
+                    this.data = res.data
+                })
         },
 
         methods:{
@@ -73,7 +82,7 @@ import posts from './posts.json'
         computed: {
             filteredList() {
                 return this.data.filter(post => {
-                    return post.title.toLowerCase().includes(this.search.toLowerCase()) || post.postid.toString().includes(this.search)
+                    return post.post_title.toLowerCase().includes(this.search.toLowerCase()) || post.id.toString().includes(this.search)
                 })
             }
         }    

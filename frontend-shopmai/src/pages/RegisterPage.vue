@@ -30,7 +30,7 @@
     import axios from 'axios'
     import Swal from "sweetalert2";
 
-    const host = 'http://127.0.0.1:8080/' || 'http://127.0.0.1:8000/'
+    const host = 'http://127.0.0.1:8888/'
 
     export default {
         name: 'RegisterPage',
@@ -48,15 +48,27 @@
         methods : {
             async register() {
                 try {
-                        const res = await axios.post(host + 'api/users/', {
+                        await axios.post(host + 'api/users/', {
                             firstname: this.firstname,
                             lastname: this.lastname,
                             email: this.email,
                             username: this.username,
                             password: this.password,
-                        });
-                        console.log(res.data);
-                        this.$router.push('/login');
+                        }).then((res) => {
+                            Swal.fire({
+                                title: 'สมัครสมาชิกสำเร็จ',
+                                icon: 'success'
+                            })
+                            
+                            this.$router.push('/login')
+                        }).catch(async (error) => {
+                            Swal.fire({
+                                title: 'สมัครสมาชิกไม่สำเร็จ',
+                                icon: 'error'
+                            })
+                            console.error(error);
+                        })
+                            console.log(res.data);
                     }
                  catch (err) {
                     console.log(err.response.data.message);
