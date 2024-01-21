@@ -29,6 +29,9 @@
 <script>
     import axios from 'axios'
     import Swal from "sweetalert2";
+
+    const host = 'http://127.0.0.1:8080/' || 'http://127.0.0.1:8000/'
+
     export default {
         name: 'RegisterPage',
         data() {
@@ -45,7 +48,7 @@
         methods : {
             async register() {
                 try {
-                        const res = await axios.post('http://127.0.0.1:8000/api/users/', {
+                        const res = await axios.post(host + 'api/users/', {
                             firstname: this.firstname,
                             lastname: this.lastname,
                             email: this.email,

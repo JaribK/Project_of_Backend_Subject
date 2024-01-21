@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'userlogin',
-    'project'
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'project_SMUp.urls'
 CORS_ALLOWED_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-"http://localhost:5173",
+    "http://localhost:5173"
 ]
 
 
@@ -92,7 +92,8 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '3306'
+        'PORT': '3306',
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" ,"use_pure": True},
     }
 }
 

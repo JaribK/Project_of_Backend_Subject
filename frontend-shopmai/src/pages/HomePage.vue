@@ -56,18 +56,27 @@
 </template>
 
 <script>
-    import posts from './posts.json';
+import axios from 'axios';
+
+const host = 'http://127.0.0.1:8080/' || 'http://127.0.0.1:8000/'
+
     export default {
         name: "HomePage",
         data() {
             return {
-                data: posts,
+                data: [],
                 search: '',
             }
                 },
                 created() {
                     this.showposts()
                     this.checkedLogin()
+                },
+                mounted() {
+                    axios.get(host + 'api/products/')
+                        .then(res => {
+                            this.data = res.data
+                        })
                 },
                 methods: {
                     showposts() {
