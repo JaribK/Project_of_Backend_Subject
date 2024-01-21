@@ -57,6 +57,7 @@ const host = 'http://127.0.0.1:8080/' || 'http://127.0.0.1:8000/'
                             title: 'ส่งข้อเสนอแนะไม่สำเร็จ',
                             icon: 'error'
                         })
+                        console.error(error);
                     })
                     console.log(this.title)
                     console.log(this.description)
