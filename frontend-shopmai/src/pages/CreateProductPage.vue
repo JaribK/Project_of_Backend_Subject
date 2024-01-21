@@ -21,18 +21,18 @@
                                 </div>
                                 <div id="attribute-box" class="grid-2 w-full ">
                                    <div class="shadow-2xl">
-                                       <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":ชื่อสินค้า:"></textarea>
+                                    <input type="text" placeholder=":ชื่อสินค้า:" class="input input-bordered w-full" />
                                    </div>
                                  </div>
                            </div><br>
                            <div id="box-product 2-3" class="w-full h-[80px]  flex justify-between">
                                 <div id="box-product2" class=" w-[470px] h-[80px] grid">
                                     <h1 class="text-[22px] text-white">ระบุราคาของสินค้า</h1>
-                                    <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":ราคาสินค้า:"></textarea>
+                                    <input type="text" placeholder=":ราคาสินค้า:" class="input input-bordered w-full" />
                                 </div>
-                                <div id="box-product3" class=" w-[470px] h-[80px] grid">
+                                <div id="box-product3" class=" w-[470px] h-[80px] grid ">
                                     <h1 class="text-[22px] text-white">ระบุจำนวนของสินค้า</h1>
-                                    <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":จำนวนสินค้า:"></textarea>
+                                    <input type="text" placeholder=":จำนวนสินค้า:" class="input input-bordered w-full" />
                                 </div>
                            </div><br>
                            <div id="box-product4" class=" w-full h-[80px] grid ">
@@ -41,18 +41,18 @@
                             </div>
                             <div id="attribute-box" class="grid-2 w-full ">
                                <div class="shadow-2xl">
-                                   <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":รูปภาพสินค้า:"></textarea>
+                                <input type="text" placeholder=":รูปภาพสินค้า:" class="input input-bordered w-full" />
                                </div>
                              </div>
                            </div><br>
                            <div id="box-product 5-6" class="w-full h-[80px]  flex justify-between">
                             <div id="box-product2" class=" w-[470px] h-[80px] grid">
                                 <h1 class="text-[22px] text-white">ช่องทางการติดต่อ (เฟสบุ๊ค)</h1>
-                                <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":facebook:"></textarea>
+                                <input type="text" placeholder=":facebook:" class="input input-bordered w-full" />
                             </div>
                             <div id="box-product3" class=" w-[470px] h-[80px] grid">
                                 <h1 class="text-[22px] text-white">ช่องทางการติดต่อ (ไลน์)</h1>
-                                <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":Line ID:"></textarea>
+                                <input type="text" placeholder=":Line ID:" class="input input-bordered w-full" />
                             </div>
                            </div><br>
                            <div id="box-product7" class=" w-full h-[80px] grid ">
@@ -60,16 +60,16 @@
                                <h1 class="text-[22px] text-white">ระบุรายละเอียดของสินค้า</h1>
                             </div>
                             <div id="attribute-box" class="grid-2 w-full ">
-                               <div class="shadow-2xl">
-                                   <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[120px] rounded-[8px]" placeholder=":รายละเอียดสินค้า:"></textarea>
+                               <div>
+                                <textarea id="message" rows="15" class="input input-bordered w-full h-[130px] pt-4" placeholder=":รายละสินค้า:"></textarea>
                                </div>
                              </div>
                              <div class="flex justify-evenly pt-10">
-                                <router-link to="/">
-                                    <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ยืนยัน</button>
+                                <router-link to="/home">
+                                    <button class="btn btn-success text-[20px] w-[173px] h-[48px] bg-[#00A711] text-white">ยืนยัน</button>
                                 </router-link>
-                                <router-link to="/">
-                                    <button class="btn btn-warning text-[20px] w-[173px] h-[48px]">ยกเลิก</button>
+                                <router-link to="/home">
+                                    <button class="btn btn-error text-[20px] w-[173px] h-[48px] bg-[#A30303]">ยกเลิก</button>
                                 </router-link>
                              </div>
                              

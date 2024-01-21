@@ -1,5 +1,7 @@
 <script setup>
     import Navbar from "../components/NavbarFeedback.vue"
+
+    document.title = 'Feedback | ShopMaiUP'
 </script>
 
 <template>

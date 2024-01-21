@@ -1,5 +1,7 @@
 <script setup>
-    import Navbar from '../components/NavbarNoneSelect.vue';
+    import Navbar from '../components/NavbarNoneSelect.vue'
+
+    document.title = 'Profile | ShopMaiUP';
 </script>
 
 <template>

@@ -22,7 +22,7 @@
                                     </div>
                                     <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F] ">
                                         <div class="shadow-2xl">
-                                            <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":ชื่อโพส:"></textarea>
+                                            <input type="text" placeholder=":ชื่อโพส:" class="input input-bordered w-full" />
                                         </div>
                                     </div>
                                     
@@ -33,7 +33,7 @@
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
                                        <div class="shadow-2xl">
-                                        <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":จำนวนโพส:"></textarea>
+                                        <input type="text" placeholder=":จำนวนโพส:" class="input input-bordered w-full" />
                                        </div>
                                    </div>
                                    
@@ -43,7 +43,7 @@
                                        <h1 class="text-[22px] text-white">ระบุรายละเอียดโพส</h1>
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
-                                        <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[229px] rounded-[8px]" placeholder=":รายละเอียดโพส:"></textarea>
+                                        <textarea id="message" rows="15" class="input input-bordered w-full h-[225px] pt-4" placeholder=":รายละเอียดโพส:"></textarea>
                                    </div>
                                    
                                 </div><br>
@@ -53,7 +53,7 @@
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
                                        <div class="shadow-2xl">
-                                        <textarea id="message" rows="4" class="block p-2.5 w-full text-[20px] h-[50px] rounded-[8px]" placeholder=":รูปภาพโพส:"></textarea>
+                                        <input type="text" placeholder=":รูปภาพโพส:" class="input input-bordered w-full" />
                                        </div>
                                    </div>
                                    
