@@ -29,17 +29,17 @@
                         <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1" >
                             <div class="h-[258px] w-[520px] rounded-[28px] flex overflow-hidden shadow-lg shadow-black" v-for="d in filteredList" :key="d.postid">
                                 <div class="w-[240px] bg-[#252837] h-full rounded-l-[28px]">
-                                    <img :src="d.image" class="h-full object-cover">
+                                    <img :src="d.post_thumbnail" class="h-full object-cover">
                                 </div>
                                 <div class="w-[280px] h-full bg-white p-4 flex flex-col justify-between">
                                     <div>
-                                        <h3 class="text-xl font-semibold">{{ d.title}}</h3>
-                                        <h4 class="text-lg">฿{{ d.price }}</h4>
-                                        <p>{{ d.description }}</p>
+                                        <h3 class="text-xl font-semibold">{{ d.post_title}}</h3>
+                                        <h4 class="text-lg">฿xxxx</h4>
+                                        <p>{{ d.post_sfdc }}</p>
                                     </div>
                                     <div class="w-full grid grid-cols-[65%_35%] ">
                                         <div class="h-full w-full flex items-center">
-                                            <p>มีสินค้าทั้งหมด {{ d.amount }} ชิ้น</p>
+                                            <p>มีสินค้าทั้งหมด xx ชิ้น</p>
                                         </div>
                                         <router-link :to="`/product/` + d.postid">
                                             <button class="btn btn-secondary h-fit ">เพิ่มเติม</button>
@@ -56,18 +56,27 @@
 </template>
 
 <script>
-    import posts from './posts.json';
+import axios from 'axios';
+
+const host = 'http://127.0.0.1:8888/'
+
     export default {
         name: "HomePage",
         data() {
             return {
-                data: posts,
+                data: [],
                 search: '',
             }
                 },
                 created() {
                     this.showposts()
                     this.checkedLogin()
+                },
+                mounted() {
+                    axios.get(host + 'api/posts/')
+                        .then(res => {
+                            this.data = res.data
+                        })
                 },
                 methods: {
                     showposts() {
@@ -83,7 +92,7 @@
                 computed: {
                     filteredList() {
                         return this.data.filter(post => {
-                            return post.title.toLowerCase().includes(this.search.toLowerCase())
+                            return post.post_title.toLowerCase().includes(this.search.toLowerCase())
                         })
 
                     },
