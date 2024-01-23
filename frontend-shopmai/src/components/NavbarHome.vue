@@ -34,7 +34,7 @@
                         <router-link to="/profile"> 
                             <li class="text-blue-400 font-bold hover:bg-slate-700 rounded-lg"><a>โปรไฟล์ของคุณ</a></li>
                         </router-link>
-                        <li class="text-red-500 font-bold hover:bg-slate-700 rounded-lg" @click="logout"><a>ออกจากระบบ</a></li>
+                        <li class="text-red-500 font-bold hover:bg-slate-700 rounded-lg" @click="logout_button"><a>ออกจากระบบ</a></li>
                     </ul>
                 </details>
             </div>
@@ -43,26 +43,47 @@
 
 <script>
     import Swal from 'sweetalert2';
+    import axios from 'axios';
+    const host = 'http://127.0.0.1:8888/'
 
     export default {
         data () {
             return {
-                
+                logout: ''
+            }
+        },
+        async mounted() {
+            try {
+                await axios.get(host + 'api/token', {
+                    headers: {
+                        Authorization: 'Token ' + localStorage.getItem('token')
+                    }
+                }).then((response) => {
+                    console.log(response.data)
+                })
+            } catch (error) {
+                console.error(error)
             }
         },
         methods : {
-            logout() {
+            logout_button() {
                 Swal.fire({
                     title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
                     icon: "warning",
                     showCancelButton: true,
                     cancelButtonText: "ยกเลิก",
-                    confirmButtonText: 'แน่นอน'
+                    confirmButtonText: 'แน่นอน'               
                 }).then((result) => {
+                    
                     if (result.isConfirmed) {
-                        localStorage.removeItem('username', this.username);
+                        localStorage.removeItem('user');
+                        localStorage.removeItem('token');
                         this.$router.push('/login');
                     }
+
+                    // }).catch((error) => {
+                    //     console.error(error)
+                    // })
                 })
             },
         }

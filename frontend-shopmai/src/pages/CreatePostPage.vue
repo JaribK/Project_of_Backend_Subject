@@ -22,7 +22,7 @@
                                     </div>
                                     <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F] ">
                                         <div class="shadow-2xl">
-                                            <input type="text" placeholder=":ชื่อโพส:" class="input input-bordered w-full" />
+                                            <input type="text" placeholder=":ชื่อโพส:" v-model="post_title" class="input input-bordered w-full" />
                                         </div>
                                     </div>
                                     
@@ -43,7 +43,7 @@
                                        <h1 class="text-[22px] text-white">ระบุรายละเอียดโพส</h1>
                                    </div>
                                    <div id="attribute-box" class="flex-2 w-[630px] border-b-2 border-[#5F5F5F]">
-                                        <textarea id="message" rows="15" class="input input-bordered w-full h-[225px] pt-4" placeholder=":รายละเอียดโพส:"></textarea>
+                                        <textarea id="message" rows="15" class="input input-bordered w-full h-[225px] pt-4" placeholder=":รายละเอียดโพส:" v-model="post_description"></textarea>
                                    </div>
                                    
                                 </div><br>
@@ -76,4 +76,53 @@
     </div>
 
 </template>
+
+<script>
+import axios from 'axios';
+import Swal from "sweetalert2";
+const host = 'http://127.0.0.1:8888/';
+
+    export default {
+        name: "CreatePostPage",
+        data() {
+            return {
+
+                post_title: "",
+
+                post_description:"",
+                
+                createpost: []
+            };
+        },
+        methods: {
+            async addFeedback() {
+                try {
+                    await axios.post(host + 'api/createpost/', {
+                        post_title: this.post_title,
+                        post_description: this.post_description
+                    }).then((res) => {
+                        Swal.fire({
+                            title: '',
+                            icon: 'success'
+                        })
+                        
+                        this.post_title = "";
+                        this.post_description = "";
+                    }).catch((error) => {
+                        Swal.fire({
+                            title: '',
+                            icon: 'error'
+                        })
+                        console.error(error);
+                    })
+                    console.log(this.post_title)
+                    console.log(this.post_description)
+                } catch (error) {
+                    console.error(error);
+
+                }
+            }
+        }
+    }
+</script>
 

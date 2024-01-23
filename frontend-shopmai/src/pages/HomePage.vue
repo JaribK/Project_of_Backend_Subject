@@ -29,7 +29,7 @@
                         <div id="listproduct" class="grid grid-cols-2 pt-16 gap-8 max-lg:grid-cols-1" >
                             <div class="h-[258px] w-[520px] rounded-[28px] flex overflow-hidden shadow-lg shadow-black" v-for="d in filteredList" :key="d.postid">
                                 <div class="w-[240px] bg-[#252837] h-full rounded-l-[28px]">
-                                    <img :src="d.post_thumbnail" class="h-full object-cover">
+                                    <img :src="blank_thumbnail" class="h-full object-cover">
                                 </div>
                                 <div class="w-[280px] h-full bg-white p-4 flex flex-col justify-between">
                                     <div>
@@ -57,6 +57,8 @@
 
 <script>
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import { isProxy, toRaw } from 'vue';
 
 const host = 'http://127.0.0.1:8888/'
 
@@ -64,42 +66,44 @@ const host = 'http://127.0.0.1:8888/'
         name: "HomePage",
         data() {
             return {
-                data: [],
+                blank_thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNVoIq-v4rRfSf7ALIjyE_VZC_l2tRvrJcErAl-7V3oJemj7VgRdLfMK9i_ylfAuky2x0&usqp=CAU',
+                post_data: [],
+                product_data: [],
                 search: '',
             }
                 },
-                created() {
-                    this.showposts()
-                    this.checkedLogin()
-                },
-                mounted() {
-                    axios.get(host + 'api/posts/')
-                        .then(res => {
-                            this.data = res.data
+                async mounted() {
+                    await axios.get(host + 'api/posts/')
+                        .then((res) => {
+                            this.post_data = res.data
+                            console.log(this.post_data)
                         })
+                    
+                    await axios.get(host + `api/products/`)
+                        .then((res) => {
+                            this.product_data = res.data
+                            console.log(this.product_data)
+                        })
+                    
+                    if (isProxy(this.post_data)) {
+                        let post_raw = toRaw(this.post_data)
+                    }
+
+                    if (isProxy(this.post_data)) {
+                        let product_raw = toRaw(this.product_data)
+                    }
+
+                    
                 },
                 methods: {
-                    showposts() {
-                        console.log(this.data)
-                    }
-                    ,
-                    checkedLogin() {
-                        if (localStorage.getItem('username') != null) {
-                            this.username = localStorage.getItem('username')
-                        }
-                    }
                 },
                 computed: {
                     filteredList() {
-                        return this.data.filter(post => {
+                        return this.post_data.filter(post => {
                             return post.post_title.toLowerCase().includes(this.search.toLowerCase())
                         })
-
                     },
-                    logout() {
-                        localStorage.removeItem('username', this.username)
-                        this.$router.push('/login')
-                    }
+
                 }
             }
 </script>

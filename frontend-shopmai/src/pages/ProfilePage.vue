@@ -10,11 +10,11 @@
         <div class="grid grid-cols-1 pt-[80px] p-16">
             <div class="flex flex-col items-center w-full">
                 <h1 class="text-white text-[32px] mb-[64px]">โปรไฟล์ผู้ใช้</h1>
-                <img class="w-[140px] h-[140px] rounded-full mb-[25px]" src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg" alt="">
+                <img class="w-[140px] h-[140px] rounded-full mb-[25px]" :src="user_profile" alt="">
                 <p class="text-white text-[24px] font-bold mb-[55px]">
                     {{ username }}
                 </p>
-                <button class="btn w-[212px] h-[48px] btn-error" @click="logout">ออกจากระบบ</button>
+                <button class="btn w-[212px] h-[48px] btn-error" @click="logout_button">ออกจากระบบ</button>
             </div>
             <div id="information" class=" w-[1024px] my-16 rounded-[28px] overflow-hidden justify-self-center">
                 <div class="bg-[#3C3C3C] drop-shadow-lg z-50 p-4">
@@ -27,25 +27,25 @@
                                 <div class="py-4 w-[123px] bg-[#3C3C3C] text-white rounded-l-[20px] grid place-items-center">
                                     <p>ชื่อ</p>
                                 </div>
-                                <input type="text" :value="firstname" class="input rounded-l-none h-full rounded-r-[20px]">
+                                <input type="text" :value="firstname" class="input rounded-l-none h-full rounded-r-[20px]" disabled>
                             </label>
                             <label class="flex h-[56px]">
                                 <div class="py-4 w-[123px] bg-[#3C3C3C] text-white rounded-l-[20px] grid place-items-center">
                                     <p>นามสกุล</p>
                                 </div>
-                                <input type="text" :value="lastname" class="input rounded-l-none h-full rounded-r-[20px]">
+                                <input type="text" :value="lastname" class="input rounded-l-none h-full rounded-r-[20px]" disabled>
                             </label>
                             <label class="flex h-[56px]">
                                 <div class="py-4 w-[123px] bg-[#3C3C3C] text-white rounded-l-[20px] grid place-items-center">
                                     <p>อีเมล</p>
                                 </div>
-                                <input type="text" :value="email" class="input rounded-l-none h-full rounded-r-[20px]">
+                                <input type="text" :value="email" class="input rounded-l-none h-full rounded-r-[20px]" disabled>
                             </label>
                             <label class="flex h-[56px]">
                                 <div class="py-4 w-[123px] bg-[#3C3C3C] text-white rounded-l-[20px] grid place-items-center">
                                     <p>บทบาท</p>
                                 </div>
-                                <input type="text" :value="role" class="input rounded-l-none h-full rounded-r-[20px]">
+                                <input type="text" :value="role" class="input rounded-l-none h-full rounded-r-[20px]" disabled>
                             </label>
                         </div>
                     </div>
@@ -84,35 +84,61 @@
 </template>
 
 <script>
-    import posts from './posts.json'
+    import Swal from 'sweetalert2';
 
     export default {
         name: 'ProfilePage',
         data() {
             return {
-                    username: 'abc',
-                    firstname: 'abc',
-                    lastname: 'efg',
-                    email: 'abc@gmail.com',
-                    role: 'member',
-                    data:posts
+                user_profile: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+                username: '',
+                firstname: '',
+                lastname: '',
+                email: '',
+                role: '',
             }
         },
         methods : {
-            logout() {
-                        Swal.fire({
-                            title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
-                            icon: "warning",
-                            showCancelButton: true,
-                            cancelButtonText: "ยกเลิก",
-                            confirmButtonText: 'แน่นอน'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                localStorage.removeItem('username', this.username)
-                                this.$router.push('/login')
-                            }
-                        })
-                    },
+            logout_button() {
+                Swal.fire({
+                    title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "ยกเลิก",
+                    confirmButtonText: 'แน่นอน'               
+                }).then((result) => {
+                    
+                    if (result.isConfirmed) {
+                        localStorage.removeItem('user');
+                        localStorage.removeItem('token');
+                        this.$router.push('/login');
+                    }
+
+                    // }).catch((error) => {
+                    //     console.error(error)
+                    // })
+                })
+            },
+        },
+        async mounted() {
+            try {
+                const user = localStorage.getItem('user')
+                const user_data = JSON.parse(user)
+
+                this.username = user_data.username;
+                this.firstname = user_data.first_name;
+                this.lastname = user_data.last_name;
+                this.email = user_data.email;
+
+                if (!user_data.is_staff) {
+                    this.role = "Member"
+                } else {
+                    this.role = "Admin"
+                }
+
+            } catch (error) {
+                console.error(error);
+            }
         }
     }
 </script>

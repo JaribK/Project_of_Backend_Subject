@@ -30,6 +30,9 @@
 
 <script>
 import axios from 'axios'
+
+const host = 'http://127.0.0.1:8888/'
+
     export default {
         name: 'LoginPage',
         data () {
@@ -40,12 +43,21 @@ import axios from 'axios'
         },
         methods: {
             async login(){
-                const res = await axios.post('http://localhost:8000/api/login/', {
-                    username: this.username,
-                    password: this.password
-                });
+                try {
+                    await axios.post(host + 'api/login', {
+                        username: this.username,
+                        password: this.password,
+                    }).then((response) => {
+                        console.log(response.data)
+                        const user = JSON.stringify(response.data.user)
+                        localStorage.setItem('token', response.data.token);
+                        localStorage.setItem('user', user);
+                        this.$router.push('/home')
+                    })
+                } catch (error) {
+                    console.error(error);
+                }
 
-                console.log(res.data);
             }
         }
     }

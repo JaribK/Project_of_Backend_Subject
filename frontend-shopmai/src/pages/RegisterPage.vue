@@ -48,27 +48,48 @@
         methods : {
             async register() {
                 try {
-                        await axios.post(host + 'api/users/', {
-                            firstname: this.firstname,
-                            lastname: this.lastname,
-                            email: this.email,
-                            username: this.username,
-                            password: this.password,
-                        }).then((res) => {
+                        if ( 
+                            this.firstname 
+                            && this.lastname
+                            && this.username
+                            && this.email
+                            && this.password
+                            && this.confirmPassword
+                            ) {
+                                if ((this.password == this.confirmPassword)) {
+                                    await axios.post(host + 'api/register', {
+                                        first_name: this.firstname,
+                                        last_name: this.lastname,
+                                        email: this.email,
+                                        username: this.username,
+                                        password: this.password,
+                                    }).then(async (res) => {
+                                        Swal.fire({
+                                            title: 'สมัครสมาชิกสำเร็จ',
+                                            icon: 'success'
+                                        })
+                                        
+                                        await this.$router.push('/login')
+                                    }).catch(async (error) => {
+                                        Swal.fire({
+                                            title: 'สมัครสมาชิกไม่สำเร็จ',
+                                            icon: 'error'
+                                        })
+                                        console.error(error);
+                                    })
+                                        console.log(res.data);
+                                } else {
+                                    Swal.fire({
+                                        title: 'รหัสผ่านไม่ตรงกัน',
+                                        icon: 'error'
+                                    })
+                                }
+                        } else {
                             Swal.fire({
-                                title: 'สมัครสมาชิกสำเร็จ',
-                                icon: 'success'
-                            })
-                            
-                            this.$router.push('/login')
-                        }).catch(async (error) => {
-                            Swal.fire({
-                                title: 'สมัครสมาชิกไม่สำเร็จ',
+                                title: 'ข้อมูลไม่ครบ',
                                 icon: 'error'
                             })
-                            console.error(error);
-                        })
-                            console.log(res.data);
+                        }
                     }
                  catch (err) {
                     console.log(err.response.data.message);
