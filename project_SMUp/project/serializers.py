@@ -1,11 +1,6 @@
 #2
 from rest_framework import serializers
-from .models import Users,Posts,Products,Feedbacks,Login,Register
-
-class UsersSerializers(serializers.ModelSerializer):
-    class Meta :
-        model = Users
-        fields = ('__all__')
+from .models import Posts,Products,Feedbacks
 
 class PostsSerializers(serializers.ModelSerializer):
     class Meta :
@@ -21,13 +16,3 @@ class FeedbacksSerializers(serializers.ModelSerializer):
     class Meta :
         model = Feedbacks
         fields = ('__all__')
-
-class LoginSerializers(serializers.ModelSerializer):
-    class Meta :
-        model = Login
-        fields = ('username','password')
-
-class RegisterSerializers(serializers.ModelSerializer):
-    class Meta :
-        model = Register
-        fields = ('firstname','lastname','username','password','email')

@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Users',
+            name='User',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('firstname', models.CharField(max_length=50)),
@@ -56,11 +56,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='posts',
             name='ulike_post',
-            field=models.ManyToManyField(related_name='liked_posts', to='project.users'),
+            field=models.ManyToManyField(related_name='liked_posts', to='project.user'),
         ),
         migrations.AddField(
             model_name='posts',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='posts', to='project.users'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='posts', to='project.user'),
         ),
     ]

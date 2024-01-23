@@ -19,10 +19,10 @@ from django.urls import path, include, re_path
 from . import views
 
 urlpatterns = [
-    re_path('test/login',views.login),
-    re_path('test/register',views.register),
-    re_path('test/token',views.token),
-    re_path('test/logout',views.logout),
+    re_path('api/login',views.login),
+    re_path('api/register',views.register),
+    re_path('api/token',views.token),
+    re_path('api/logout',views.logout),
     path('user/',include('userlogin.urls')),
     path('',include('project.urls')),
     path('admin/', admin.site.urls),

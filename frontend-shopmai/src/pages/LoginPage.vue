@@ -20,7 +20,7 @@
                             <span class="label-text">จดจำชื่อผู้ใช้ของฉัน</span>
                         </label>
                     </div>
-                    <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white py-1" @click="login">เข้าสู่ระบบ</button>
+                    <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white py-1">เข้าสู่ระบบ</button>
                     <router-link to="/register" class="text-center pt-8 underline underline-offset-2">ยังไม่มีบัญชีใช่หรือไม่ ?</router-link>
                 </form>
             </div>
@@ -29,29 +29,23 @@
 </template>
 
 <script>
-import Swal from "sweetalert2";
+import axios from 'axios'
     export default {
         name: 'LoginPage',
         data () {
             return {
                 username: '',
                 password: '',
-                user:"123",
-                pass:"123"
             }
         },
         methods: {
-            login(){
-                if (this.username == this.user && this.password == this.pass) {
-                    localStorage.setItem('username', this.username)
-                    this.$router.push('/home')
-                } else {
-                    Swal.fire({
-                        icon: "error",
-                        title: "เกิดข้อผิดพลาด!",
-                        text: "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!",
-                    });
-                }
+            async login(){
+                const res = await axios.post('http://localhost:8000/api/login/', {
+                    username: this.username,
+                    password: this.password
+                });
+
+                console.log(res.data);
             }
         }
     }

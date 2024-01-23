@@ -19,7 +19,7 @@ def login(req):
         return Response({'error': 'Wrong password'}, status=status.HTTP_200_OK)
     token = Token.objects.get_or_create(user=user)
     serializer = UserSerializer(instance=user)
-    return Response({'token': token[0].key,"user": UserSerializer(user).data})
+    return Response({'token': token[0].key,"user": serializer.data})
 
 @api_view(['POST'])
 def register(req):

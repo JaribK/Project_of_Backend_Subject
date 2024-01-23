@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'userlogin',
-    'project',
+    'project'
 ]
 
 MIDDLEWARE = [
@@ -59,7 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'project_SMUp.urls'
 CORS_ALLOWED_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
+"http://localhost:5173",
 ]
 
 

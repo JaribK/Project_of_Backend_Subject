@@ -1,6 +1,7 @@
 <script setup>
     import Navbar from '../components/NavbarAdmin.vue'
-    import IconSearchBar from '../components/icons/IconSearchbar.vue';
+    import IconSearchBar from '../components/icons/IconSearchbar.vue'
+    document.title = 'Admin | ShopMaiUP'
 </script>
 
 <template>

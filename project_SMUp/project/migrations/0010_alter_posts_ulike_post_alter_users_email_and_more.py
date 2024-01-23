@@ -13,15 +13,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='posts',
             name='ulike_post',
-            field=models.ManyToManyField(related_name='liked_posts', to='project.users'),
+            field=models.ManyToManyField(related_name='liked_posts', to='project.user'),
         ),
         migrations.AlterField(
-            model_name='users',
+            model_name='user',
             name='email',
             field=models.EmailField(max_length=60, unique=True),
         ),
         migrations.AlterField(
-            model_name='users',
+            model_name='user',
             name='username',
             field=models.CharField(max_length=50, unique=True),
         ),
