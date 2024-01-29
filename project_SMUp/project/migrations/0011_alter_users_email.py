@@ -11,7 +11,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name='users',
+            model_name='user',
             name='email',
             field=models.EmailField(max_length=60),
         ),

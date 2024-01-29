@@ -1,6 +1,6 @@
 #4
 from django.urls import path, include
-from .views import PostsList,PostsDetail,ProductsList,ProductsDetail,FeedbacksList,FeedbacksDetail
+from .views import PostsList,PostsDetail,ProductsList,ProductsDetail,FeedbacksList,FeedbacksDetail,UserPostsList,UserPostsDetail
 from . import views
 
 urlpatterns = [
@@ -11,4 +11,6 @@ urlpatterns = [
     path('products/<int:pk>/',ProductsDetail.as_view()),
     path('feedbacks/',FeedbacksList.as_view()),
     path('feedbacks/<int:pk>/',FeedbacksDetail.as_view()),
+    path('userposts/',UserPostsList.as_view()),
+    path('userposts/<int:pk>/',UserPostsDetail.as_view()),
 ]

@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='posts',
             name='ulike_post',
-            field=models.ManyToManyField(null=True, related_name='liked_posts', to='project.users'),
+            field=models.ManyToManyField(null=True, related_name='liked_posts', to='project.user'),
         ),
     ]

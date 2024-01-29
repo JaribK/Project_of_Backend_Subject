@@ -2,10 +2,8 @@
 from django.shortcuts import render
 from rest_framework import generics
 
-from .models import Posts,Products,Feedbacks
-from .serializers import PostsSerializers,ProductsSerializers,FeedbacksSerializers
-
-# Create your views here.
+from .models import Posts,Products,Feedbacks,UserPosts
+from .serializers import PostsSerializers,ProductsSerializers,FeedbacksSerializers,UserPostsSerializers
 
 #Users
 #Posts
@@ -53,8 +51,25 @@ class FeedbacksDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FeedbacksSerializers
     queryset = Feedbacks.objects.all()
 
+#UserPosts
+class UserPostsList(generics.ListCreateAPIView):
+    serializer_class = UserPostsSerializers
+
+    def get_queryset(self):
+        queryset = UserPosts.objects.all()
+        location = self.request.query_params.get('location')
+        if location is not None:
+            queryset = queryset.filter(testLocation=location)
+        return queryset
+
+class UserPostsDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserPostsSerializers
+    queryset = UserPosts.objects.all()
+
+
+
 apis_data = [
-    {'name_api':'Users','src':{'list':'users','index':'users/1/'}},
+    {'name_api':'User','src':{'list':'user','index':'user/1/'}},
     {'name_api':'Posts','src':{'list':'posts','index':'posts/1/'}},
     {'name_api':'Products','src':{'list':'products','index':'products/1/'}},
     {'name_api':'Feedbacks','src':{'list':'feedbacks','index':'feedbacks/1/'}}
