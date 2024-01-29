@@ -13,8 +13,9 @@ document.title = 'Product | ShopMaiUP'
             <div class="grid place-items-center">
                 <div class="w-4/5 grid place-items-center py-16 space-y-16 ">
                     <div
-                        class="outline text-white w-full pr-16 flex justify-between items-center rounded-[28px] h-[175px] relative overflow-hidden">
-                        <div class="dropdown dropdown-end absolute right-0 top-0 mr-8 mt-4 z-50" v-if="getPostCanEditIfMatchUserId()">
+                        class="outline text-white w-full pr-16 grid grid-cols-[85%_15%] rounded-[28px] h-[175px] relative overflow-hidden">
+                        <div class="dropdown dropdown-left absolute right-0 top-0 mr-8 mt-4 z-50"
+                            v-if="getPostCanEditIfMatchUserId()">
                             <button>
                                 <IconThreeDotsVue class="justify-self-end self-center translate-y-[-8px]" />
                             </button>
@@ -26,43 +27,45 @@ document.title = 'Product | ShopMaiUP'
                         </div>
                         <div class="dropdown dropdown-end absolute right-0 top-0 mr-8 mt-4 z-50" v-else>
                         </div>
-                        <div class="pr-8 z-0 h-full flex">
-                            <div class="w-[200px] aspect-square overflow-hidden grid place-items-center relative">
-                                <img :src="post_data.post_thumbnail" class="h-full scale-150 object-cover">
-                                <div class="absolute bg-[#1D1F2B] right-0 w-5 h-[200px] blur-sm translate-x-3"></div>
+                        <div class="h-full grid grid-cols-[20%_80%] w-full pr-4">
+                            <div class="overflow-hidden grid place-items-center relative scale-150">
+                                <img :src="post_data.post_thumbnail" class="scale-110">
+                                <div class="absolute bg-[#1D1F2B] right-0 w-8 h-[249px] blur-sm translate-x-4"></div>
                             </div>
-                            <div class="pl-6 py-4">
+                            <div class="pl-16 py-4">
                                 <h1 class="text-[36px] font-bold">{{ post_data.post_title }}</h1>
                                 <p class="text-[18px]">{{ post_data.post_sfdc }}</p>
                             </div>
                         </div>
-                        <button v-if="CheckUlikePost == false" @click="Like"
-                            class="outline-3 btn bg-transparent hover:bg-[#FFBB29] text-white text-2xl font-bold z-10"
-                            id="like-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                            Like
-                        </button>
-                        <button v-if="CheckUlikePost == true" @click="UnLike"
-                            class="outline-3 btn bg-transparent hover:bg-[#FFBB29] text-white text-2xl font-bold z-10"
-                            id="like-button">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                            </svg>
-                            Unlike
-                        </button>
+                        <div class="grid place-items-center h-full">
+                            <button v-if="CheckUlikePost == false" @click="Like"
+                                class="w-full outline-3 btn bg-transparent hover:bg-[#FFBB29] text-white text-2xl font-bold z-10"
+                                id="like-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                Like
+                            </button>
+                            <button v-if="CheckUlikePost == true" @click="UnLike"
+                                class="w-full outline-3 btn bg-[#FFBB29] hover:bg-transparent text-white text-2xl font-bold z-10"
+                                id="like-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                Unlike
+                            </button>
+                        </div>
                     </div>
                     <div class="flex w-[1106px] h-[656px] rounded-[28px] shadow-lg shadow-black"
                         v-for="product in product_data_id" :key="product.id">
                         <div class="w-[450px] h-full flex flex-col ">
                             <div
                                 class="w-[450px] h-[450px] bg-[#252837] overflow-hidden grid place-items-center rounded-tl-[28px]">
-                                <img :src="product.img_src" alt="product_image" class="h-full object-cover">
+                                <img :src="product.img_src" class="h-full object-cover">
                             </div>
                             <div
                                 class="w-full h-[calc(656px-450px)] border-r-2 border-[#252837] p-4 space-y-2 bg-white rounded-bl-[28px]">
@@ -133,6 +136,28 @@ export default {
             like_post: [],
             CheckUlikePost: false,
         }
+    },    
+    async mounted() {
+        await axios.get(host + 'api/products')
+            .then((res) => {
+                this.product_data = res.data;
+            })
+
+        await axios.get(host + 'api/posts/' + this.$route.params.id)
+            .then((res) => {
+                this.post_data = res.data
+            })
+        await axios.get(host + 'userposts/')
+            .then((res) => {
+                this.like_post = res.data;
+            });
+
+        this.getUserfromLocalStorage();
+        this.getPostId();
+        this.getLikePost();
+        this.getProductMatchPostId();
+        this.getLikePostIdfromPost(this.post_data.id)
+
     },
     methods: {
         getUserfromLocalStorage() {
@@ -143,10 +168,7 @@ export default {
         },
 
         async getPostId() {
-            await axios.get(host + 'api/posts/' + this.$route.params.id)
-                .then((res) => {
-                    this.post_id = res.data.id
-                })
+            this.post_id = this.$route.params.id
         },
 
         async getLikePost() {
@@ -206,15 +228,15 @@ export default {
         },
 
         toEditPostPage() {
-            this.$router.push(`/post/${this.$route.params.id}/edit-post`)
+            this.$router.push(`/product/${this.$route.params.id}/edit-post`)
         },
 
         toCreateProductPage() {
-            this.$router.push(`/post/${this.$route.params.id}/create-product`)
+            this.$router.push(`/product/${this.$route.params.id}/create-product`)
         },
 
         toEditProductPage(product_id) {
-            this.$router.push(`/post/${this.$route.params.id}/edit-product/${product_id}`)
+            this.$router.push(`/product/${this.$route.params.id}/edit-product/${product_id}`)
         },
 
         deletePost() {
@@ -267,36 +289,5 @@ export default {
             })
         }
     },
-
-
-    async mounted() {
-
-        await axios.get(host + 'api/products')
-            .then((res) => {
-                this.product_data = res.data;
-            })
-
-        await axios.get(host + 'api/posts/' + this.$route.params.id + '/')
-            .then((res) => {
-                this.post_data = res.data
-            })
-        await axios.get(host + 'userposts/')
-            .then((res) => {
-                this.like_post = res.data;
-            });
-
-
-        this.getUserfromLocalStorage();
-        this.getPostId();
-        this.getLikePost();
-
-        this.getProductMatchPostId();
-
-        this.getLikePostIdfromPost(this.post_data.id)
-    },
-
-    computed: {
-
-    }
 }
 </script>

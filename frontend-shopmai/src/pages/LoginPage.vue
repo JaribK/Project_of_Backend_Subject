@@ -14,14 +14,10 @@
                     <h2 id="title-login" class="text-center text-[32px] font-bold pb-2">เข้าสู่ระบบ</h2>
                     <input type="text" v-model="username" id="username" placeholder="ชื่อผู้ใช้" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     <input type="password" v-model="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
-                    <div class="form-control py-2">
-                        <label class="cursor-pointer flex items-center space-x-2">
-                            <input type="checkbox" id="remember" class="checkbox checkbox-sm">
-                            <span class="label-text">จดจำชื่อผู้ใช้ของฉัน</span>
-                        </label>
-                    </div>
+                    <div class="py-2"></div>
                     <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white py-1">เข้าสู่ระบบ</button>
-                    <router-link to="/register" class="text-center pt-8 underline underline-offset-2">ยังไม่มีบัญชีใช่หรือไม่ ?</router-link>
+                    <div class="py-4"></div>
+                    <router-link to="/register" class="text-center underline underline-offset-2">ยังไม่มีบัญชีใช่หรือไม่ ?</router-link>
                 </form>
             </div>
         </div>
@@ -30,6 +26,9 @@
 
 <script>
 import axios from 'axios'
+
+const host = 'http://127.0.0.1:8888/'
+
     export default {
         name: 'LoginPage',
         data () {
@@ -40,13 +39,29 @@ import axios from 'axios'
         },
         methods: {
             async login(){
-                const res = await axios.post('http://localhost:8000/api/login/', {
-                    username: this.username,
-                    password: this.password
-                });
+                try {
+                    await axios.post(host + 'api/login', {
+                        username: this.username,
+                        password: this.password,
+                    }).then((response) => {
+                        const user = JSON.stringify(response.data.user)
+                        localStorage.setItem('token', response.data.token);
+                        localStorage.setItem('user', user);
+                        localStorage.setItem('profile', `https://placehold.jp/100/ffffff/000000/250x250.png?text=${this.username[0].toUpperCase()}`)
+                        this.$router.push('/home')
+                    })
+                } catch (error) {
+                    console.error(error);
+                }
 
-                console.log(res.data);
             }
+        },
+        mounted() {
+            const token = localStorage.getItem('token')
+
+            if (token) {
+                this.$router.push('/home')
+            } 
         }
     }
 </script>

@@ -10,10 +10,10 @@
             </router-link>
         </div>
         <div id="menu">
-            <a @click="ifclickInthisPage">
+            <a @click="ifclickInthisPage" class="cursor-pointer">
                 <div id="menu01">รายการสินค้า</div>
             </a>
-            <a @click="ifclickInthisPage">
+            <a @click="ifclickInthisPage" class="cursor-pointer">
                 <div id="menu02">ข้อเสนอแนะ</div>
             </a>
         </div>
@@ -45,7 +45,7 @@
                     title: "เกิดข้อผิดพลาด!",
                     text: "กรุณาเข้าสู่ระบบก่อน!",
                 });                
-            }
+            },
         }
     }
 </script>

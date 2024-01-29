@@ -16,6 +16,9 @@
             <router-link to="/feedback">
                 <div id="menu02">ข้อเสนอแนะ</div>
             </router-link>
+            <router-link to="/admin-manage" v-if="user.is_staff == true">
+                <div id="menu03">จัดการโพสต์</div>
+            </router-link>
             </div>
             <div id="crepost">
                 <router-link to="/create-post">
@@ -28,15 +31,13 @@
             <div id="profile">
                 <details class="dropdown dropdown-end ">
                     <summary class="m-1 avatar cursor-pointer">
-                        <img id="pro-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+                        <img id="pro-pic" :src="user_profile">
                     </summary>
                     <ul class="dropdown-content z-[1] menu shadow bg-accent rounded-box w-52 text-white outline outline-2 outline-slate-600 mt-2">
                         <router-link to="/profile"> 
                             <li class="text-blue-400 font-bold hover:bg-slate-700 rounded-lg"><a>โปรไฟล์ของคุณ</a></li>
                         </router-link>
-                        <router-link to="/login">
-                            <li class="text-red-500 font-bold hover:bg-slate-700 rounded-lg" @Click="logout"><a>ออกจากระบบ</a></li>
-                        </router-link>
+                        <li class="text-red-500 font-bold hover:bg-slate-700 rounded-lg" @click="logout_button"><a>ออกจากระบบ</a></li>
                     </ul>
                 </details>
             </div>
@@ -44,9 +45,43 @@
 </template>
 
 <script>
+    import Swal from 'sweetalert2';
+
+
     export default {
         data () {
             return {
+                user: '',
+                user_profile: ''
+            }
+        },
+        mounted() {
+            this.getDataUser();
+            this.getUserProile();
+        },
+        methods : {
+            logout_button() {
+                Swal.fire({
+                    title: "ต้องการออกจากระบบอย่างงั้นรึ ?",
+                    icon: "warning",
+                    showCancelButton: true,
+                    cancelButtonText: "ยกเลิก",
+                    confirmButtonText: 'แน่นอน'               
+                }).then((result) => {
+                    
+                    if (result.isConfirmed) {
+                        localStorage.removeItem('user');
+                        localStorage.removeItem('token');
+                        this.$router.push('/login');
+                    }
+                })
+            },
+            getDataUser() {
+                this.user = JSON.parse(localStorage.getItem('user'));
+            },
+            getUserProile() {
+                const profile = localStorage.getItem('profile');
+                this.user_profile = profile
             }
         }
     }

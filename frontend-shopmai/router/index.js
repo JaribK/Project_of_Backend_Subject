@@ -35,22 +35,22 @@ const routes = [
         component: CreatePostPage,
     },
     {
-        path: '/product/:id',
+        path: '/post/:id',
         name: 'product',
         component: ProductPage,
     },
     {
-        path: '/edit-post',
+        path: '/post/:id/edit-post',
         name: 'edit-post',
         component: EditPostPage,
     },
     {
-        path: '/create-product',
+        path: '/post/:id/create-product',
         name: 'create-product',
         component: CreateProductPage,
     },
     {
-        path: '/edit-product',
+        path: '/post/:id/edit-product/:productId',
         name: 'edit-product',
         component: EditProductPage,
     },
@@ -76,9 +76,18 @@ const routes = [
     }
 ]
 
+
 const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+
+router.beforeEach((to, from, next) => {
+    if (to.path !== '/login' && to.path !== '/register' && to.path !== '/' && localStorage.getItem('token') == null) {
+      next('/');
+    } else {
+      next();
+    }
+});
 
 export default router

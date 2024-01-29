@@ -18,8 +18,11 @@
                     <input v-model="password" type="password" id="password" placeholder="รหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     <input v-model="confirmPassword" type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน" class="input input-bordered w-full max-w-xs h-fit py-1" required/>
                     
-                    <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white pt-2" @click="register">สมัครสมาชิก</button>
-                    <router-link to="/login" class="text-center pt-8 underline">มีบัญชีอยู่แล้ว ?</router-link>
+                    <router-link to="/login" class="justify-self-center w-full">
+                        <button type="submit" class="btn bg-[#3668A7] rounded-[20px] text-white w-full" @click="register">สมัครสมาชิก</button>
+                    </router-link>
+                    <div class="py-4"></div>
+                    <router-link to="/login" class="text-center underline">มีบัญชีอยู่แล้ว ?</router-link>
                 </form>
             </div>
         </div>
@@ -48,27 +51,42 @@
         methods : {
             async register() {
                 try {
-                        await axios.post(host + 'api/users/', {
-                            firstname: this.firstname,
-                            lastname: this.lastname,
-                            email: this.email,
-                            username: this.username,
-                            password: this.password,
-                        }).then((res) => {
+                        if ( 
+                            this.firstname 
+                            && this.lastname
+                            && this.username
+                            && this.email
+                            && this.password
+                            && this.confirmPassword
+                            ) {
+                                if ((this.password === this.confirmPassword)) {
+                                    await axios.post(host + 'api/register', {
+                                        first_name: this.firstname,
+                                        last_name: this.lastname,
+                                        email: this.email,
+                                        username: this.username,
+                                        password: this.password,
+                                    }).then((response) => {
+                                        this.$router.push('/login')
+                                    }).catch((error) => {
+                                        Swal.fire({
+                                            title: 'สมัครสมาชิกไม่สำเร็จ',
+                                            icon: 'error'
+                                        })
+                                        console.error(error);
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        title: 'รหัสผ่านไม่ตรงกัน',
+                                        icon: 'error'
+                                    })
+                                }
+                        } else {
                             Swal.fire({
-                                title: 'สมัครสมาชิกสำเร็จ',
-                                icon: 'success'
-                            })
-                            
-                            this.$router.push('/login')
-                        }).catch(async (error) => {
-                            Swal.fire({
-                                title: 'สมัครสมาชิกไม่สำเร็จ',
+                                title: 'ข้อมูลไม่ครบ',
                                 icon: 'error'
                             })
-                            console.error(error);
-                        })
-                            console.log(res.data);
+                        }
                     }
                  catch (err) {
                     console.log(err.response.data.message);
