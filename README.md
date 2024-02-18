@@ -7,3 +7,6 @@ GOJO1/2
 65025918 นายปรัชญา ชัยเสริมเทวัญ <br>
 65022780 วรพล กลับศรี
 <br>
+
+FrontEnd_Folder: frontend-shopmai
+BackEnd_Folder: project_SMUp
